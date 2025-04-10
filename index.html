@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>HealthSOS</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 </head>
 <body>
   <nav class="navbar">
@@ -12,18 +14,21 @@
       <h2>HealthSOS</h2>
     </div>
     <div class="nav-links">
-      <button onclick="showSection('home')">Home</button>
-      <button onclick="showSection('symptom')">Symptom Checker</button>
-      <button onclick="showSection('locator')">Hospital Locator</button>
+      <button onclick="showSection('home')"><i class="fas fa-home"></i>Home</button>
+      <button onclick="showSection('symptom')"><i class="fas fa-stethoscope"></i>Symptom Checker</button>
+      <button onclick="showSection('locator')"><i class="fas fa-hospital"></i> Hospital Locator</button>
       <!-- Chatbot button removed -->
-      <button onclick="window.location.href='login.html'">Login</button>
+      <button onclick="window.location.href='login.html'"><i class="fas fa-sign-in-alt"></i>Login</button>
     </div>
   </nav>
 
   <!-- Home Section -->
   <section id="home" class="section active">
-    <h1>Welcome to HealthSOS</h1>
-    <p>Choose a feature from the navigation bar above.</p>
+    <div class="image-container">
+      <img src="images/Healthsos.jpg" alt="HealthSOS" class="home-image">
+      <img src="images/pic1.png" alt="Overlay Image" class="overlay-image">
+      <img src="images/pic2.png" alt="Overlay Image" class="overlay-image1">
+    </div>
   </section>
 
   <!-- Symptom Checker -->

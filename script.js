@@ -4,7 +4,6 @@ function showSection(sectionId) {
     document.getElementById(sectionId).classList.add('active');
   }
   
-  // SYMPTOM CHECKER
   function submitSymptoms() {
     const gender = document.getElementById("gender").value;
     const age = document.getElementById("age").value;
@@ -32,17 +31,13 @@ function showSection(sectionId) {
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       const diagnosis = document.getElementById("diagnosis");
-      const triageAnalysis = document.getElementById("triage-analysis");
   
       if (this.readyState === 4) {
         if (this.status === 200) {
           const response = JSON.parse(this.responseText);
           if (response.conditions && response.conditions.length > 0) {
             const condition = response.conditions[0];
-            diagnosis.innerHTML = `You may have <b>${condition.name}</b> with a probability of <b>${(condition.probability * 100).toFixed(2)}%</b>.`;
-  
-            // Fetch condition details
-            getConditionDetails(condition.id);
+            diagnosis.innerHTML = `You may have <b>${condition.name}</b> with a probability of <b>${(condition.probability * 100).toFixed(2)}%</b>`;
   
             // Perform triage analysis
             getTriageAnalysis(postData);
@@ -88,7 +83,6 @@ function showSection(sectionId) {
     xhr.send(JSON.stringify(postData));
   }
   
-  // HOSPITAL LOCATOR
   function findNearbyPlaces() {
     const apiKey = "2a924d7f92ce4442bbbbc68a9315f45f"; 
   
@@ -141,4 +135,3 @@ function showSection(sectionId) {
       results.appendChild(list);
     }
   }
-  

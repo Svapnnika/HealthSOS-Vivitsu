@@ -1,18 +1,66 @@
 body {
     font-family: Arial, sans-serif;
-    /* background-image: linear-gradient(to right, rgb(245, 248, 249), #2273a8); */
     background-color: aliceblue;
     margin: 0;
     padding: 0;
 }
 #home {
-    background-image: url('images/home.webp');
-    background-size: cover; 
-    background-position: center;
-    background-repeat: no-repeat;
     min-height: 100vh; 
     padding: 20px;
+    font-family: 'Times New Roman', Times, serif;
   }
+  #home p{
+    font-size: large;
+  }
+  .home-image {
+    width: 40%;
+    height: 600px; 
+    border-radius: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .image-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .overlay-image {
+    width: 55%;
+    position: absolute;
+    top: 110px;
+    right: 25px;
+    height: auto; 
+    border-radius: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  
+  .overlay-image:hover {
+    transform: scale(1.05); 
+    opacity: 0.9;
+  }
+  
+  .overlay-image1 {
+    width: 55%;
+    position: absolute;
+    top: 430px;
+    right: 25px;
+    height: auto; 
+    border-radius: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .overlay-image1:hover {
+    transform: scale(1.05); 
+    opacity: 0.9;
+  }
+  .home-image:hover {
+  transform: scale(1.05); 
+  opacity: 0.9; 
+}
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -21,16 +69,26 @@ body {
     color: #fff;
     padding: 10px 20px;
   }
-  
+  .nav-links{
+    display: flex;
+    gap: 20px
+  }
   .nav-links button {
-    margin: 0 8px;
-    padding: 6px 12px;
-    border: none;
-    background-color: #3498db;
-    color: white;
-    cursor: pointer;
-    border-radius: 2px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 3px 8px;
+  padding: 12px 15px;
+  height: 40px;
+  border: none;
+  background-color: #71abd2;
+  color: white;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: medium;
+  font-family: 'Times New Roman', Times, serif;
+    
 }
 
 .nav-links button:hover {
@@ -87,7 +145,7 @@ body {
   
   button {
     padding: 8px 16px;
-    background-color: #6f6944;
+    background-color: #7897c2;
     color: #fff;
     border: none;
     border-radius: 2px;
@@ -96,9 +154,16 @@ body {
   }
   
   button:hover {
-    background-color: #48216b;
+    background-color: #07216f;
     transform: scale(1.05);
   }
+  .hospitals-container {
+       display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
   .hospital {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
@@ -106,13 +171,43 @@ body {
     padding: 15px;
     margin-bottom: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
+    flex: 0 0 calc(48% - 20px);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+    
+      .hospital:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+    
+      .hospital h3 {
+        color: #2c3e50;
+        margin-top: 0;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 8px;
+      }
+    
+      .place-type {
+        display: inline-block;
+      background-color: #3498db;
+        color: white;
+        padding: 3px 8px;
+        border-radius: 3px;
+        font-size: 0.8em;
+        margin-bottom: 10px;
+      }
+    
+      @media (max-width: 768px) {
+        .hospital {
+          flex: 0 0 100%;
+      }
+    }
   .chatbot-gif {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 120px;
-    height: 140px;
+    width: 150px;
+    height: 200px;
     z-index: 1000;
     transition: transform 0.3s ease, opacity 0.3s ease;
     opacity: 0.8;
@@ -166,4 +261,21 @@ body {
     height: 60px;
     border-radius: 50%;
     margin-right: 10px;
+  }
+  #results ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0;
+    list-style: none;
+    margin-top: 15px;
+  }
+  
+  #results li {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    line-height: 1.4;
+    transition: transform 0.2s ease;
   }
