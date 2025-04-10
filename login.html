@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - HealthSOS</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form id="login-form">
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+    <div id="login-message" style="color: red; margin-top: 10px;"></div>
+  </div>
+  <script>
+    const loginForm = document.getElementById('login-form');
+    const loginMessage = document.getElementById('login-message');
+
+    loginForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      if (username === 'svapnnika' && password === '123') {
+        sessionStorage.setItem('isLoggedIn', true);
+        // Redirect to the main page
+        window.location.href = 'index.html#home';
+      } else {
+        loginMessage.textContent = 'Invalid username or password';
+      }
+    });
+  </script>
+</body>
+</html>

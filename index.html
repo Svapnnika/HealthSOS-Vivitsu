@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HealthSOS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo-container">
+      <img src="images/logo.png" alt="logo" class="logo">
+      <h2>HealthSOS</h2>
+    </div>
+    <div class="nav-links">
+      <button onclick="showSection('home')">Home</button>
+      <button onclick="showSection('symptom')">Symptom Checker</button>
+      <button onclick="showSection('locator')">Hospital Locator</button>
+      <!-- Chatbot button removed -->
+      <button onclick="window.location.href='login.html'">Login</button>
+    </div>
+  </nav>
+
+  <!-- Home Section -->
+  <section id="home" class="section active">
+    <h1>Welcome to HealthSOS</h1>
+    <p>Choose a feature from the navigation bar above.</p>
+  </section>
+
+  <!-- Symptom Checker -->
+  <section id="symptom" class="section">
+    <h1>Symptom Checker</h1>
+    <div class="form-group">
+      <label for="gender">Gender:</label>
+      <select id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input type="number" id="age" min="0">
+    </div>
+    <br>
+
+    <label>Symptoms:</label>
+    <ul id="symptoms-list">
+      <li><input type="checkbox" name="symptom" value="s_21">Abdominal pain</li>
+      <li><input type="checkbox" name="symptom" value="s_10">Anxiety</li>
+      <li><input type="checkbox" name="symptom" value="s_1193">Back pain</li>
+      <li><input type="checkbox" name="symptom" value="s_98">Chest pain</li>
+      <li><input type="checkbox" name="symptom" value="s_188">Cough</li>
+      <li><input type="checkbox" name="symptom" value="s_109">Diarrhea</li>
+      <li><input type="checkbox" name="symptom" value="s_104">Dizziness</li>
+      <li><input type="checkbox" name="symptom" value="s_16">Fatigue</li>
+      <li><input type="checkbox" name="symptom" value="s_140">Fever</li>
+      <li><input type="checkbox" name="symptom" value="s_23">Headache</li>
+      <li><input type="checkbox" name="symptom" value="s_156">Nausea</li>
+      <li><input type="checkbox" name="symptom" value="s_26">Sore throat</li>
+      <li><input type="checkbox" name="symptom" value="s_25">Vomiting</li>
+      <li><input type="checkbox" name="symptom" value="s_45">Joint pain</li>
+      <li><input type="checkbox" name="symptom" value="s_31">Shortness of breath</li>
+      <li><input type="checkbox" name="symptom" value="s_62">Rash</li>
+      <li><input type="checkbox" name="symptom" value="s_17">Chest tightness</li>
+      <li><input type="checkbox" name="symptom" value="s_37">Frequent urination</li>
+      <li><input type="checkbox" name="symptom" value="s_56">Nasal congestion</li>
+      <li><input type="checkbox" name="symptom" value="s_8">Backache</li>
+      <li><input type="checkbox" name="symptom" value="s_52">Loss of appetite</li>
+      <li><input type="checkbox" name="symptom" value="s_73">Swollen lymph nodes</li>
+      <li><input type="checkbox" name="symptom" value="s_42">Coughing up blood</li>
+      <li><input type="checkbox" name="symptom" value="s_57">Nausea and vomiting</li>
+      <li><input type="checkbox" name="symptom" value="s_81">Shortness of breath with exertion</li>
+      <li><input type="checkbox" name="symptom" value="s_95">Chest pressure</li>
+      <li><input type="checkbox" name="symptom" value="s_102">Dry cough</li>
+      <li><input type="checkbox" name="symptom" value="s_113">Fainting</li>
+      <li><input type="checkbox" name="symptom" value="s_126">Loss of consciousness</li>
+      <li><input type="checkbox" name="symptom" value="s_137">Difficulty swallowing</li>
+      <li><input type="checkbox" name="symptom" value="s_165">Sneezing</li>
+      <li><input type="checkbox" name="symptom" value="s_172">Numbness or tingling</li>
+      <li><input type="checkbox" name="symptom" value="s_195">Blurred vision</li>
+      <li><input type="checkbox" name="symptom" value="s_208">Abnormal bleeding</li>
+      <li><input type="checkbox" name="symptom" value="s_216">Chest discomfort</li>
+      <li><input type="checkbox" name="symptom" value="s_221">Swollen joints</li>
+      <li><input type="checkbox" name="symptom" value="s_239">Memory loss</li>
+      <li><input type="checkbox" name="symptom" value="s_251">Night sweats</li>
+      <li><input type="checkbox" name="symptom" value="s_264">Stiff neck</li>
+      <li><input type="checkbox" name="symptom" value="s_281">Abnormal heartbeat</li>
+      <li><input type="checkbox" name="symptom" value="s_298">Weight gain</li>
+      <li><input type="checkbox" name="symptom" value="s_307">Hair loss</li>
+      <li><input type="checkbox" name="symptom" value="s_315">Muscle weakness</li>
+      <li><input type="checkbox" name="symptom" value="s_329">Sweating</li>
+      <li><input type="checkbox" name="symptom" value="s_337">Swollen feet or ankles</li>
+      <li><input type="checkbox" name="symptom" value="s_343">Bloating</li>
+      <li><input type="checkbox" name="symptom" value="s_359">Rapid heartbeat</li>
+      <li><input type="checkbox" name="symptom" value="s_359">Knee Pain</li>
+    </ul>
+    <br>
+    <button onclick="submitSymptoms()">Submit</button>
+    <div id="diagnosis"></div>
+    <div id="triage-analysis"></div>
+    <img src="images/chatbot.gif" alt="chatbot" class="chatbot-gif" onclick="showSection('chatbot')">
+  </section>
+
+  <!-- Hospital Locator -->
+  <section id="locator" class="section">
+    <h1>Nearby Hospitals & Pharmacies</h1>
+    <button onclick="findNearbyPlaces()">Find Nearby</button>
+    <div id="results"></div>
+  </section>
+
+  <!-- Chatbot -->
+  <section id="chatbot" class="section">
+    <div class="chatbot-header">
+      <button class="go-back-button" onclick="showSection('symptom')">Go Back</button>
+      <h1>Chatbot</h1>
+    </div>
+    <iframe
+      src="https://www.chatbase.co/chatbot-iframe/ejEps3Xmii6fTOJE1PKDy"
+      width="990px"
+      height="500px"
+      frameBorder="0"
+    ></iframe>
+  </section>
+  <script src="script.js"></script>
+</body>
+</html>
