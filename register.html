@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - HealthSOS</title>
+  <title>Register - HealthSOS</title>
   <style>
     :root {
       --primary: #2c9f94;
@@ -44,7 +44,7 @@
       z-index: -1;
     }
     
-    .login-container {
+    .register-container {
       background-color: white;
       padding: 30px;
       border-radius: 12px;
@@ -105,7 +105,8 @@
     }
     
     input[type="text"],
-    input[type="password"] {
+    input[type="password"],
+    input[type="email"] {
       width: 100%;
       padding: 12px 15px;
       box-sizing: border-box;
@@ -116,7 +117,8 @@
     }
     
     input[type="text"]:focus,
-    input[type="password"]:focus {
+    input[type="password"]:focus,
+    input[type="email"]:focus {
       border-color: var(--primary);
       box-shadow: 0 0 0 3px rgba(44, 159, 148, 0.15);
       outline: none;
@@ -142,7 +144,7 @@
       box-shadow: 0 5px 15px rgba(44, 159, 148, 0.2);
     }
     
-    #login-message {
+    #register-message {
       color: var(--error);
       margin-top: 15px;
       font-size: 14px;
@@ -153,51 +155,29 @@
       display: none;
     }
     
-    #login-message.visible {
+    #register-message.visible {
       display: block;
     }
     
-    .forgot-password {
-      margin-top: 15px;
-      font-size: 14px;
-    }
-    
-    .forgot-password a {
-      color: var(--secondary);
-      text-decoration: none;
-    }
-    
-    .forgot-password a:hover {
-      text-decoration: underline;
-    }
-    
-    .register-link {
+    .login-link {
       margin-top: 20px;
       padding-top: 20px;
       border-top: 1px solid #eee;
       font-size: 14px;
     }
     
-    .register-link a {
+    .login-link a {
       color: var(--primary);
       font-weight: 600;
       text-decoration: none;
     }
     
-    .register-link a:hover {
+    .login-link a:hover {
       text-decoration: underline;
     }
     
-    .password-toggle {
-      position: absolute;
-      right: 12px;
-      top: 38px;
-      cursor: pointer;
-      color: #999;
-    }
-    
     @media (max-width: 480px) {
-      .login-container {
+      .register-container {
         width: 90%;
         padding: 20px;
       }
@@ -205,73 +185,54 @@
   </style>
 </head>
 <body>
-  <div class="login-container">
+  <div class="register-container">
     <div class="logo">
       <span class="logo-icon">❤</span> HealthSOS
     </div>
-    <h2>Sign In</h2>
-    <form id="login-form">
+    <h2>Register</h2>
+    <form id="register-form">
       <div class="form-group">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" placeholder="Enter your username" required>
       </div>
       <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
         <label for="password">Password</label>
         <input type="password" id="password" name="password" placeholder="Enter your password" required>
-        <span class="password-toggle" id="password-toggle">👁</span>
       </div>
-      <button type="submit">Sign In</button>
+      <button type="submit">Register</button>
     </form>
-    <div id="login-message"></div>
-    <div class="forgot-password">
-      <a href="#">Forgot password?</a>
-    </div>
-    <div class="register-link">
-      Don't have an account? <a href="register.html">Register</a>
+    <div id="register-message"></div>
+    <div class="login-link">
+      Already have an account? <a href="login.html">Sign In</a>
     </div>
   </div>
 
   <script>
-    const loginForm = document.getElementById('login-form');
-    const loginMessage = document.getElementById('login-message');
-    const passwordToggle = document.getElementById('password-toggle');
-    const passwordInput = document.getElementById('password');
-    passwordToggle.addEventListener('click', function() {
-      if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        passwordToggle.textContent = '🔒';
-      } else {
-        passwordInput.type = 'password';
-        passwordToggle.textContent = '👁';
-      }
-    });
+    const registerForm = document.getElementById('register-form');
+    const registerMessage = document.getElementById('register-message');
 
-    loginForm.addEventListener('submit', function(event) {
+    registerForm.addEventListener('submit', function(event) {
       event.preventDefault();
       
       const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
       const button = this.querySelector('button');
-      button.textContent = 'Signing in...';
+      button.textContent = 'Registering...';
       button.disabled = true;
+      
       setTimeout(() => {
-        if (username === 'svapnnika' && password === '123') {
-          sessionStorage.setItem('isLoggedIn', 'true');
-          loginMessage.textContent = 'Login successful!';
-          loginMessage.style.display = 'block';
-          loginMessage.style.color = '#27ae60';
-          loginMessage.style.backgroundColor = 'rgba(39, 174, 96, 0.1)';
-          setTimeout(() => {
-            window.location.href = 'index.html#home';
-          }, 1000);
-        } else {
-          loginMessage.textContent = 'Invalid username or password';
-          loginMessage.style.display = 'block';
-          loginMessage.style.color = '#e74c3c';
-          loginMessage.style.backgroundColor = 'rgba(231, 76, 60, 0.1)';
-          button.textContent = 'Sign In';
-          button.disabled = false;
-        }
+        // Simulate registration success
+        registerMessage.textContent = 'Registration successful!';
+        registerMessage.style.display = 'block';
+        registerMessage.style.color = '#27ae60';
+        registerMessage.style.backgroundColor = 'rgba(39, 174, 96, 0.1)';
+        button.textContent = 'Register';
+        button.disabled = false;
       }, 800);
     });
   </script>
